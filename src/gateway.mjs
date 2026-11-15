@@ -25,6 +25,14 @@ export async function createGateway(scenario = 'standard') {
         if (!spec.resources.includes(name)) return send({ error: '资源未提供' }, 404);
         if ((scenario === 'missing-buffer' && name === 'metadata.bin') || (scenario === 'missing-content' && name.includes('payload/')) || (scenario === 'missing-alternative' && name === 'photo2.bin') || (scenario === 'missing-target' && name === 'target-release.json')) return send({ error: '来源资源缺失' }, 404);
         let bytes = await readFile(new URL(name, fixtures));
+        if (name === 'feed-manifest.json' && ['gap','explicit-reset'].includes(scenario)) {
+          const manifest=JSON.parse(bytes);
+          manifest.frames[1].sequence=3;
+          manifest.frames[2].sequence=4;
+          if (scenario === 'explicit-reset') manifest.resets.push(4);
+          bytes=Buffer.from(JSON.stringify(manifest));
+        }
+        if (name === 'templates.xml' && scenario === 'missing-template') return send({ error: '模板不可取得' },404);
         if (scenario === 'bad-inventory-digest' && name.endsWith('.sha512')) bytes = Buffer.from('0'.repeat(128) + ' inventory.json\n');
         if (scenario === 'version-mismatch' && name === 'v2/inventory.json') bytes = Buffer.from(bytes.toString().replace('"head": "v2"', '"head": "v1"'));
         if (scenario === 'outside-offset' && name === 'metadata.bin') bytes = bytes.subarray(0, 3);
