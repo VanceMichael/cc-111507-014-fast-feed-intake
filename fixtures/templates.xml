@@ -1,0 +1,1 @@
+<templates xmlns="http://www.fixprotocol.org/ns/fast/td/1.1"><template name="Quote" id="1" dictionary="template"><uInt32 name="Instrument"><copy/></uInt32><uInt32 name="Price" presence="optional"><delta/></uInt32></template></templates>

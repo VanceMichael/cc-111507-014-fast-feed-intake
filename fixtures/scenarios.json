@@ -1,0 +1,50 @@
+[
+  {
+    "id": "standard",
+    "entry": "feed.fast",
+    "version": "source-v1",
+    "resources": [
+      "feed.fast",
+      "templates.xml",
+      "feed-manifest.json"
+    ],
+    "behavior": "standard",
+    "description": "授权行情研究源：standard"
+  },
+  {
+    "id": "gap",
+    "entry": "feed.fast",
+    "version": "source-v1",
+    "resources": [
+      "feed.fast",
+      "templates.xml",
+      "feed-manifest.json"
+    ],
+    "behavior": "gap",
+    "description": "授权行情研究源：gap"
+  },
+  {
+    "id": "explicit-reset",
+    "entry": "feed.fast",
+    "version": "source-v1",
+    "resources": [
+      "feed.fast",
+      "templates.xml",
+      "feed-manifest.json"
+    ],
+    "behavior": "explicit-reset",
+    "description": "授权行情研究源：explicit-reset"
+  },
+  {
+    "id": "missing-template",
+    "entry": "feed.fast",
+    "version": "source-v1",
+    "resources": [
+      "feed.fast",
+      "templates.xml",
+      "feed-manifest.json"
+    ],
+    "behavior": "missing-template",
+    "description": "授权行情研究源：missing-template"
+  }
+]
